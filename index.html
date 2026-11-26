@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time to Decimal Calculator – Convert Hours & Minutes to Decimal Instantly</title>
+<meta name="description" content="Free time to decimal calculator. Convert hours, minutes and seconds into decimal hours instantly for timesheets, payroll and billing. Accurate, fast and mobile friendly.">
+<meta name="keywords" content="time to decimal calculator, time to decimal, hours to decimal, minutes to decimal converter, decimal hours calculator">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sumhours.com/time-to-decimal-calculator/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Time to Decimal Calculator – Instant Decimal Hours">
+<meta property="og:description" content="Convert hours, minutes and seconds into decimal hours instantly with this premium free calculator.">
+<meta property="og:url" content="https://sumhours.com/time-to-decimal-calculator/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Time to Decimal Calculator">
+<meta name="twitter:description" content="Convert time to decimal hours instantly.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Time to Decimal Calculator",
+  "url": "https://sumhours.com/time-to-decimal-calculator/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free online time to decimal calculator that converts hours, minutes and seconds into decimal hours."
+}
+</script>
+
+<style>
+:root {
+  --bg: #07070a;
+  --card: rgba(20, 20, 28, 0.75);
+  --gold: #d4af37;
+  --gold-light: #f5e6b8;
+  --gold-dark: #8a6d1d;
+  --text: #ece7d8;
+  --muted: #a9a293;
+  --border: rgba(212, 175, 55, 0.25);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Georgia", "Playfair Display", serif;
+  background: radial-gradient(circle at top, #1a1608 0%, var(--bg) 55%);
+  color: var(--text);
+  line-height: 1.8;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated background orbs */
+.bg-orbs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bg-orbs span {
+  position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25;
+  background: radial-gradient(circle, var(--gold), transparent 70%);
+  animation: float 18s ease-in-out infinite;
+}
+.bg-orbs span:nth-child(1) { width: 420px; height: 420px; top: -120px; left: -100px; }
+.bg-orbs span:nth-child(2) { width: 360px; height: 360px; bottom: -120px; right: -80px; animation-delay: -9s; }
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+/* Hero */
+.hero { text-align: center; padding: 90px 20px 50px; animation: fadeUp 1s ease both; }
+.eyebrow {
+  letter-spacing: 4px; text-transform: uppercase; font-size: 0.8rem;
+  color: var(--gold); font-family: "Helvetica Neue", Arial, sans-serif;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 3.8rem); margin: 14px 0; line-height: 1.2;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold), var(--gold-light), var(--gold-dark));
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+.sub { color: var(--muted); font-size: 1.1rem; }
+@keyframes shimmer { to { background-position: 200% center; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+
+main { max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* Calculator card */
+.calc-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 22px;
+  padding: 40px 32px; backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  animation: fadeUp 1.2s ease both;
+}
+.calc-card h2 { color: var(--gold-light); font-weight: normal; font-size: 1.6rem; margin-bottom: 20px; text-align: center; }
+.calc-card h3 { color: var(--gold); font-weight: normal; font-size: 1.2rem; margin: 10px 0 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+label {
+  display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;
+  color: var(--muted); font-family: "Helvetica Neue", Arial, sans-serif;
+}
+input {
+  background: #0d0d12; border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px; color: var(--gold-light); font-size: 1.2rem; outline: none;
+  transition: border-color .3s, box-shadow .3s;
+}
+input:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(212,175,55,0.15); }
+button {
+  margin-top: 22px; width: 100%; padding: 16px; border: none; border-radius: 14px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  color: #111; font-size: 1.05rem; font-weight: bold; cursor: pointer;
+  letter-spacing: 1px; transition: transform .25s, box-shadow .25s;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,175,55,0.35); }
+.result {
+  margin-top: 24px; text-align: center; font-size: 2.4rem; color: var(--gold-light);
+  animation: pop .5s ease;
+}
+.result.small { font-size: 1.6rem; }
+@keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: none; opacity: 1; } }
+.formula { text-align: center; color: var(--muted); font-size: 0.95rem; margin-top: 10px; font-style: italic; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: end; }
+.row button { margin-top: 0; width: auto; padding: 14px 24px; }
+hr { border: none; border-top: 1px solid var(--border); margin: 30px 0; }
+
+/* Article */
+.article {
+  margin-top: 70px; background: var(--card); border: 1px solid var(--border);
+  border-radius: 22px; padding: 48px 40px; animation: fadeUp 1.2s ease both;
+}
+.article h2 {
+  color: var(--gold-light); font-weight: normal; font-size: 1.9rem;
+  margin: 46px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+}
+.article h2:first-child { margin-top: 0; }
+.article h3 { color: var(--gold); font-weight: normal; font-size: 1.3rem; margin: 26px 0 10px; }
+.article p { margin-bottom: 18px; font-size: 1.05rem; color: var(--text); }
+.article ol, .article ul { margin: 0 0 20px 24px; color: var(--text); }
+.article li { margin-bottom: 10px; font-size: 1.05rem; }
+.article a { color: var(--gold); text-decoration: underline; text-underline-offset: 4px; transition: color .3s; }
+.article a:hover { color: var(--gold-light); }
+.code-box {
+  background: #0d0d12; border-left: 3px solid var(--gold); padding: 16px 20px;
+  border-radius: 10px; font-family: "Courier New", monospace; color: var(--gold-light);
+  margin: 18px 0 24px; overflow-x: auto;
+}
+figure { margin: 30px auto; text-align: center; }
+figure svg { max-width: 100%; height: auto; }
+figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 10px; font-style: italic; }
+table {
+  width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 1rem;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+th { color: var(--gold); font-weight: normal; letter-spacing: 1px; }
+td { color: var(--text); }
+tr:hover td { background: rgba(212,175,55,0.06); }
+
+footer { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 40px 20px; font-family: "Helvetica Neue", Arial, sans-serif; }
+
+@media (max-width: 640px) {
+  .grid3 { grid-template-columns: 1fr; }
+  .calc-card, .article { padding: 28px 20px; }
+  .row { grid-template-columns: 1fr; }
+  .result { font-size: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="bg-orbs"><span></span><span></span></div>
+
+<header class="hero">
+  <p class="eyebrow">Premium Time Tools</p>
+  <h1>Time to Decimal Calculator</h1>
+  <p class="sub">Convert hours, minutes and seconds into decimal hours in one tap.</p>
+</header>
+
+<main>
+  <section class="calc-card" id="calculator" aria-labelledby="calc-title">
+    <h2 id="calc-title">Convert Time to Decimal</h2>
+    <div class="grid3">
+      <label>Hours
+        <input type="number" id="h" min="0" value="7" inputmode="numeric">
+      </label>
+      <label>Minutes
+        <input type="number" id="m" min="0" max="59" value="30" inputmode="numeric">
+      </label>
+      <label>Seconds
+        <input type="number" id="s" min="0" max="59" value="0" inputmode="numeric">
+      </label>
+    </div>
+    <button id="convertBtn" type="button">Convert to Decimal</button>
+    <div class="result" id="result" aria-live="polite">7.5000 hours</div>
+    <p class="formula">Decimal = Hours + Minutes ÷ 60 + Seconds ÷ 3600</p>
+
+    <hr>
+
+    <h3>Decimal to Time</h3>
+    <div class="row">
+      <label>Decimal hours
+        <input type="number" id="dec" step="0.01" min="0" value="7.75">
+      </label>
+      <button id="reverseBtn" type="button">Convert to Time</button>
+    </div>
+    <div class="result small" id="rev" aria-live="polite">7 h 45 m 0 s</div>
+  </section>
+
+  <article class="article">
+
+    <h2>What Is a Time to Decimal Calculator?</h2>
+    <p>A time to decimal calculator is an online tool that converts a time value written in hours, minutes and seconds into a single decimal number. For example, 7 hours and 30 minutes becomes 7.5 decimal hours. The idea is simple, yet many people find it confusing because everyday clocks use a base-60 system, while calculators, spreadsheets, payroll software and billing systems usually expect base-10 decimal numbers.</p>
+    <p>If you want a faster way to handle these conversions, you can explore more practical examples and detailed guidance <a href="https://sumhours.com/time-to-decimal-calculator/">See More</a>. The full resource explains how decimal hours are used in real work, with extra examples that make the process easier to understand for beginners and professionals alike.</p>
+    <p>Whether you are a freelancer tracking billable work, an employee filling in a timesheet, or a manager reviewing team hours, a reliable time to decimal calculator saves time and removes the risk of manual errors. Instead of doing repeated math by hand, you enter the time, and the result appears instantly.</p>
+
+    <h2>Why Decimal Time Matters</h2>
+    <p>Hours and minutes are easy to read, but they are difficult to add, multiply or compare directly. Imagine you worked 6 hours and 45 minutes on Monday, 7 hours and 20 minutes on Tuesday, and 5 hours and 50 minutes on Wednesday. Adding these values in hours and minutes requires carrying minutes past 60 and converting them back into hours. Decimal time removes that step and turns the total into a plain number that spreadsheets can process instantly.</p>
+    <p>Decimal hours are especially useful for calculating wages. If your hourly rate is 25 dollars and you worked 7.75 hours, multiplying 7.75 by 25 gives you 193.75 dollars. Trying the same calculation with 7 hours and 45 minutes requires an extra conversion step, which increases the chance of mistakes. Many payroll systems and invoicing platforms store time as decimal values for this exact reason.</p>
+    <p>Decimal time also makes reporting cleaner. Charts, averages and totals are easier to create when every entry is a number rather than a mix of hours and minutes. This is why project managers, accountants and data analysts often prefer decimal format when they summarize work.</p>
+
+    <h2>The Formula Behind Time to Decimal Conversion</h2>
+    <p>The conversion is based on one simple principle: there are 60 minutes in an hour and 3600 seconds in an hour. To convert any time into decimal hours, divide the minutes by 60, divide the seconds by 3600, and add everything to the whole hours.</p>
+    <div class="code-box">Decimal Hours = Hours + (Minutes ÷ 60) + (Seconds ÷ 3600)</div>
+    <p>The illustration below shows how a standard clock reading of 7:30 translates into 7.50 decimal hours. The minute hand at the 6 position represents 30 minutes, and 30 divided by 60 equals 0.50.</p>
+
+    <figure>
+      <svg viewBox="0 0 200 230" width="220" height="253" role="img" aria-label="Clock face showing 7:30, which equals 7.50 decimal hours">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#d4af37" stroke-width="6"/>
+        <circle cx="100" cy="100" r="82" fill="#14141a"/>
+        <g stroke="#d4af37" stroke-width="3">
+          <line x1="100" y1="22" x2="100" y2="34"/>
+          <line x1="178" y1="100" x2="166" y2="100"/>
+          <line x1="100" y1="178" x2="100" y2="166"/>
+          <line x1="22" y1="100" x2="34" y2="100"/>
+        </g>
+        <line x1="100" y1="100" x2="71.7" y2="128.3" stroke="#f5e6b8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="100" y1="100" x2="100" y2="160" stroke="#d4af37" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="100" cy="100" r="5" fill="#d4af37"/>
+        <text x="100" y="222" text-anchor="middle" fill="#f5e6b8" font-size="16" font-family="Georgia, serif">7:30 = 7.50 hours</text>
+      </svg>
+      <figcaption>A clock reading of 7:30 expressed as 7.50 decimal hours.</figcaption>
+    </figure>
+
+    <h2>Step-by-Step Example of Converting Time to Decimal</h2>
+    <p>Let us convert 4 hours, 45 minutes and 36 seconds into decimal format. The process is easy when you follow each step in order.</p>
+    <ol>
+      <li>Keep the whole hours as they are. In this example, the hours value is 4.</li>
+      <li>Divide the minutes by 60. Since 45 ÷ 60 equals 0.75, this is your minutes contribution.</li>
+      <li>Divide the seconds by 3600. Since 36 ÷ 3600 equals 0.01, this is your seconds contribution.</li>
+      <li>Add all three values together: 4 + 0.75 + 0.01 = 4.76 decimal hours.</li>
+    </ol>
+    <p>The same method works for any time. Once you practice it a few times, you will notice that minutes map to common decimal values such as 15 minutes equaling 0.25 and 30 minutes equaling 0.50. The visual below shows how a single 45-minute block becomes 0.75 hours.</p>
+
+    <figure>
+      <svg viewBox="0 0 600 150" width="600" height="150" role="img" aria-label="Diagram showing 45 minutes divided by 60 equals 0.75 hours">
+        <defs>
+          <linearGradient id="gg" x1="0" x2="1">
+            <stop offset="0" stop-color="#8a6d1d"/>
+            <stop offset="1" stop-color="#f5e6b8"/>
+          </linearGradient>
+        </defs>
+        <rect x="20" y="45" width="160" height="60" rx="14" fill="#14141a" stroke="#d4af37" stroke-width="2"/>
+        <text x="100" y="82" text-anchor="middle" fill="#f5e6b8" font-size="20" font-family="Georgia, serif">45 minutes</text>
+        <line x1="190" y1="75" x2="236" y2="75" stroke="#d4af37" stroke-width="3"/>
+        <polygon points="236,67 252,75 236,83" fill="#d4af37"/>
+        <text x="213" y="60" text-anchor="middle" fill="#d4af37" font-size="18" font-family="Arial, sans-serif">÷ 60</text>
+        <rect x="260" y="45" width="180" height="60" rx="14" fill="url(#gg)"/>
+        <text x="350" y="82" text-anchor="middle" fill="#111" font-size="20" font-weight="bold" font-family="Georgia, serif">0.75 hours</text>
+        <line x1="450" y1="75" x2="480" y2="75" stroke="#d4af37" stroke-width="3" stroke-dasharray="4 4"/>
+        <text x="520" y="82" text-anchor="middle" fill="#a9a293" font-size="16" font-family="Arial, sans-serif">Decimal</text>
+      </svg>
+      <figcaption>Converting 45 minutes into 0.75 decimal hours by dividing by 60.</figcaption>
+    </figure>
+
+    <h2>Common Time to Decimal Conversion Table</h2>
+    <p>The table below lists frequently used values. Bookmark it for quick reference when you do not have a calculator nearby.</p>
+    <table>
+      <thead>
+        <tr><th>Time (Hours and Minutes)</th><th>Decimal Hours</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0 h 06 min</td><td>0.10</td></tr>
+        <tr><td>0 h 10 min</td><td>0.17</td></tr>
+        <tr><td>0 h 15 min</td><td>0.25</td></tr>
+        <tr><td>0 h 20 min</td><td>0.33</td></tr>
+        <tr><td>0 h 30 min</td><td>0.50</td></tr>
+        <tr><td>0 h 40 min</td><td>0.67</td></tr>
+        <tr><td>0 h 45 min</td><td>0.75</td></tr>
+        <tr><td>0 h 50 min</td><td>0.83</td></tr>
+        <tr><td>1 h 00 min</td><td>1.00</td></tr>
+        <tr><td>1 h 30 min</td><td>1.50</td></tr>
+        <tr><td>2 h 15 min</td><td>2.25</td></tr>
+        <tr><td>8 h 00 min</td><td>8.00</td></tr>
+      </tbody>
+    </table>
+    <p>Notice that some values, such as 20 minutes and 40 minutes, produce repeating decimals. In professional settings, most people round to two decimal places, which is accurate enough for payroll and billing in the majority of cases. Some organizations prefer four decimal places for higher precision, so always check the rules that apply to your situation.</p>
+
+    <h2>Decimal to Time: The Reverse Conversion</h2>
+    <p>Sometimes you have a decimal number and need to convert it back into hours and minutes. For example, a report might show 5.40 hours, and you want to know how that appears on a timesheet. Take the whole number as the hours, then multiply the remaining decimal by 60 to get the minutes.</p>
+    <div class="code-box">Hours = Whole part of decimal<br>Minutes = (Decimal part) × 60</div>
+    <p>Using 5.40 as the example, the hours are 5. The decimal part is 0.40, and 0.40 × 60 equals 24. The final result is 5 hours and 24 minutes. The calculator above performs this conversion automatically when you enter a decimal value and press the Convert to Time button.</p>
+
+    <h2>Who Uses a Time to Decimal Calculator?</h2>
+    <p>Decimal time is valuable across many industries and everyday situations. Here are some of the most common users:</p>
+    <ul>
+      <li><strong>Freelancers and consultants</strong> use decimal hours to bill clients accurately, especially when charging by the hour in small increments.</li>
+      <li><strong>Payroll teams</strong> rely on decimal values to multiply hours by pay rates without manual carrying of minutes.</li>
+      <li><strong>Project managers</strong> track team effort in decimal format so they can compare estimated and actual hours across tasks.</li>
+      <li><strong>Students and researchers</strong> convert lab or study durations into decimal form for reports and data analysis.</li>
+      <li><strong>Logistics and transport workers</strong> use decimal time to calculate driving hours, shift lengths and overtime.</li>
+    </ul>
+    <p>The chart below shows an example of weekly work hours recorded in decimal format. Presenting time this way makes it easy to see which days were longest and to calculate a weekly total in seconds.</p>
+
+    <figure>
+      <svg viewBox="0 0 500 270" width="500" height="270" role="img" aria-label="Bar chart of weekly work hours in decimal format from Monday to Friday">
+        <line x1="20" y1="230" x2="480" y2="230" stroke="#d4af37" stroke-width="2"/>
+        <rect x="40" y="36.25" width="50" height="193.75" rx="8" fill="#d4af37"/>
+        <rect x="130" y="23.75" width="50" height="206.25" rx="8" fill="#e8c766"/>
+        <rect x="220" y="67.5" width="50" height="162.5" rx="8" fill="#d4af37"/>
+        <rect x="310" y="30" width="50" height="200" rx="8" fill="#e8c766"/>
+        <rect x="400" y="48.75" width="50" height="181.25" rx="8" fill="#d4af37"/>
+        <g fill="#f5e6b8" font-size="15" text-anchor="middle" font-family="Arial, sans-serif">
+          <text x="65" y="28">7.75</text>
+          <text x="155" y="16">8.25</text>
+          <text x="245" y="60">6.50</text>
+          <text x="335" y="23">8.00</text>
+          <text x="425" y="42">7.25</text>
+        </g>
+        <g fill="#a9a293" font-size="15" text-anchor="middle" font-family="Arial, sans-serif">
+          <text x="65" y="254">Mon</text>
+          <text x="155" y="254">Tue</text>
+          <text x="245" y="254">Wed</text>
+          <text x="335" y="254">Thu</text>
+          <text x="425" y="254">Fri</text>
+        </g>
+      </svg>
+      <figcaption>Weekly work hours shown in decimal format for easy totals and comparisons.</figcaption>
+    </figure>
+
+    <h2>Common Mistakes to Avoid</h2>
+    <p>Even experienced people make errors when converting time. The most frequent mistake is treating the minutes as if they were a decimal directly. For example, 7 hours and 30 minutes is 7.50, not 7.30. Writing 7.30 would mean 7 hours and 18 minutes, which creates a significant difference in payroll or billing.</p>
+    <p>Another common error is forgetting to divide seconds by 3600 instead of 60. Seconds are often ignored for quick estimates, but in long projects or large datasets, those small amounts add up. A third mistake is rounding too early. If you round each entry separately and then add the results, your total may differ from the total calculated with full precision. Keep full values during calculations and round only the final result.</p>
+    <p>Finally, watch out for entries where minutes exceed 59 or seconds exceed 59. These values should be normalized before conversion. For example, 90 minutes should be entered as 1 hour and 30 minutes, which equals 1.50 decimal hours.</p>
+
+    <h2>Tips for Accurate Timesheets</h2>
+    <p>A good timesheet system reduces errors and saves hours of administrative work. Start by choosing one format and sticking with it across your team. If your company uses decimal hours for payroll, record every entry in that format from the beginning rather than converting later. Consistency is the easiest way to avoid confusion.</p>
+    <p>Round according to a clear policy. Many businesses round to the nearest six or fifteen minute interval, which corresponds to 0.10 or 0.25 decimal hours. Share the policy with everyone who submits time so the results are predictable and fair. Use a time to decimal calculator to double check important totals before submitting reports or invoices.</p>
+    <p>Finally, review your entries at the end of each week. Small mistakes are much easier to correct when they are caught early. A quick check of the decimal totals against the original hours and minutes can prevent expensive corrections later.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is a time to decimal calculator?</h3>
+    <p>It is a tool that converts hours, minutes and seconds into a decimal number of hours. For example, 2 hours and 15 minutes becomes 2.25 decimal hours. It is widely used for timesheets, billing and payroll.</p>
+
+    <h3>How do I convert minutes to decimal hours?</h3>
+    <p>Divide the number of minutes by 60. For instance, 40 minutes divided by 60 equals 0.67 decimal hours when rounded to two decimal places.</p>
+
+    <h3>How do I convert seconds to decimal hours?</h3>
+    <p>Divide the number of seconds by 3600. For example, 900 seconds divided by 3600 equals 0.25 decimal hours, which is the same as 15 minutes.</p>
+
+    <h3>Why do payroll systems use decimal hours?</h3>
+    <p>Decimal hours make it simple to multiply time by a pay rate. Instead of working with minutes and converting them back and forth, the payroll system performs a straightforward multiplication.</p>
+
+    <h3>Is the calculator accurate for large numbers of hours?</h3>
+    <p>Yes. The calculator uses precise division, so it works for small and large time values. For very detailed reporting, you can increase the number of decimal places in your spreadsheet or report.</p>
+
+    <h2>Final Thoughts</h2>
+    <p>Converting time to decimal format is a small skill that delivers big benefits. It simplifies calculations, reduces errors and makes reports easier to read. Whether you are tracking hours for a client, reviewing a team schedule or preparing a payroll file, decimal time gives you a clean and reliable number to work with.</p>
+    <p>Use the calculator at the top of this page whenever you need a quick conversion. Remember the core formula, keep the examples and table handy, and round only at the end. With these habits, your timesheets will be more accurate and your totals will always make sense.</p>
+
+  </article>
+</main>
+
+<footer>
+  <p>&copy; Time to Decimal Calculator. All rights reserved.</p>
+</footer>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const num = (id) => Math.max(0, parseFloat($(id).value) || 0);
+
+  function toDecimal() {
+    const h = num('h');
+    const m = num('m');
+    const s = num('s');
+    const decimal = h + (m / 60) + (s / 3600);
+    $('result').textContent = decimal.toFixed(4) + ' hours';
+  }
+
+  function toTime() {
+    const d = num('dec');
+    let h = Math.floor(d);
+    let mRaw = (d - h) * 60;
+    let m = Math.floor(mRaw);
+    let s = Math.round((mRaw - m) * 60);
+    if (s === 60) { s = 0; m += 1; }
+    if (m === 60) { m = 0; h += 1; }
+    $('rev').textContent = `${h} h ${m} m ${s} s`;
+  }
+
+  ['h', 'm', 's'].forEach(id => $(id).addEventListener('input', toDecimal));
+  $('dec').addEventListener('input', toTime);
+  $('convertBtn').addEventListener('click', toDecimal);
+  $('reverseBtn').addEventListener('click', toTime);
+
+  toDecimal();
+  toTime();
+</script>
+</body>
+</html>
